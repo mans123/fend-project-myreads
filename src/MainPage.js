@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Book from './Book'
+import Book from "./Book";
 
 class MainPage extends Component {
   render() {
@@ -15,9 +15,15 @@ class MainPage extends Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
-                      <Book />
-                  </li>
+                  {this.props.books
+                    .filter(books => books.shelf === "currentlyReading")
+                    .map(book => (
+                      <li key={book.id}>
+                        <Book
+                            book = {book}
+                        />
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
@@ -25,9 +31,15 @@ class MainPage extends Component {
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
-                    <Book />
-                  </li>
+                  {this.props.books
+                    .filter(books => books.shelf === "wantToRead")
+                    .map(book => (
+                      <li key={book.id}>
+                        <Book 
+                            book = {book}
+                        />
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
@@ -35,9 +47,15 @@ class MainPage extends Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
-                    <Book />
-                  </li>
+                  {this.props.books
+                    .filter(books => books.shelf === "read")
+                    .map(book => (
+                      <li key={book.id}>
+                        <Book 
+                            book = {book}
+                        />
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
