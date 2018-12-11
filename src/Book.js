@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Book extends Component {
   render() {
+      let displayThumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : '';
     return (
       <div className="book">
         <div className="book-top">
@@ -11,7 +12,7 @@ class Book extends Component {
               width: 128,
               height: 193,
               backgroundImage:
-                `url("${this.props.book.imageLinks.thumbnail}")`
+                `url("${displayThumbnail}")`
             }}
           />
           <div className="book-shelf-changer">
